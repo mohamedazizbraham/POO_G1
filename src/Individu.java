@@ -1,6 +1,6 @@
 public class Individu {
 private Etat etat;
-private sensibilité sensibilité;
+private sensibilité sensibilite;
 private int cycleResistance;
 private float x;
 private float y;
