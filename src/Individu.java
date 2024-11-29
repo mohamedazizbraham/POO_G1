@@ -7,6 +7,7 @@ private float y;
 private boolean infecter;
 private boolean guerie;
 
+
 public Individu(Etat etat, float x, float y, String sensitivite) {
     this.etat = etat;
     this.x = x;
