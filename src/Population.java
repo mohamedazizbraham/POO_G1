@@ -6,6 +6,7 @@ public class Population {
     private int taille;
 
     public Population(int taille) {
+        super();
         this.taille = taille;
         this.individus = new ArrayList<>();
     }
