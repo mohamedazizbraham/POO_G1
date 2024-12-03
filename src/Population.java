@@ -9,4 +9,6 @@ public class Population {
         this.taille = taille;
         this.individus = new ArrayList<>();
     }
+
+
 }
