@@ -1,8 +1,8 @@
-public class ComportementSpatiale {
+public class ComportementSociale {
     private boolean distanciation;
     private boolean protection;
 
-    public ComportementSpatiale() {
+    public ComportementSociale() {
         this.distanciation = distanciation;
         this.protection = protection;
     }
