@@ -21,10 +21,7 @@ public float distance() {
 
     return 0;
 }
-    public float misaAjourPosition() {
 
-        return 0;
-    }
     public String mettreAjourEtat() {
 
 
