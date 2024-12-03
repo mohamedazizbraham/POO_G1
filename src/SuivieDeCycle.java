@@ -8,6 +8,6 @@ public class SuivieDeCycle {
     }
 
     public List getCycleHistorique() {
-        return historique;
+        return historique ;
     }
 }
