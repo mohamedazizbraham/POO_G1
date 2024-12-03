@@ -16,4 +16,23 @@ public Individu(Etat etat, float x, float y, String sensitivite) {
     this.infecter = false;
     this.guerie = false;
     this.cycleResistance = 0;
-}}
+}
+public float distance() {
+
+    return 0;
+}
+    public float misaAjourPosition() {
+
+        return 0;
+    }
+    public String mettreAjourEtat() {
+
+
+        return "";
+    }
+    public boolean recevoirInfection() {
+
+
+        return false;
+    }
+}
