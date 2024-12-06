@@ -1,6 +1,7 @@
 public class Individu {
     private Etat etat; // HEALTHY, INFECTED, RECOVERED, DISEASED
-    private sensibilité sensibilite; // SENSIBLE, NEUTRE, RESISTANT
+    private sensibilité sensibilite;
+    private int cycleResistance;
     private boolean vaccine; // Indique si l'individu est vacciné
     private boolean guerie; // Indique si l'individu est guéri
     private float x, y; // Position dans l'espace 2D
@@ -46,8 +47,14 @@ public class Individu {
             if (Math.random() < 0.4) { // Probabilité de guérison
                 this.etat = Etat.Guéri;
                 this.guerie = true;
+                this.cycleResistance = 5; // Immunité temporaire (5 cycles)
             } else if (Math.random() < 0.1) { // Probabilité de décès
                 this.etat = Etat.Décédé;
+            }
+        } else if (etat == Etat.Guéri && cycleResistance > 0) {
+            cycleResistance--;
+            if (cycleResistance == 0) {
+                this.etat = Etat.Sain; // Redevient sain après la période d'immunité
             }
         }
     }
