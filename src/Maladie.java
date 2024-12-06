@@ -1,4 +1,5 @@
 public class Maladie {
+    // Attributs
     private String nom;
     private float tauxTransmission;
     private float probaGuerison;
@@ -7,15 +8,48 @@ public class Maladie {
     private float dMax;
     private float p0;
 
-    public Maladie(String nom, float tauxTransmission, float probaGuerison, int periodeIncubation, double probaDeces, float dMax, float p0) {
+    // Constructeur
+    public Maladie(String nom, float tauxTransmission, double probaGuerison, int periodeIncubation, double probaDeces, float dMax, double p0) {
         this.nom = nom;
         this.tauxTransmission = tauxTransmission;
-        this.probaGuerison = probaGuerison;
+        this.probaGuerison = (float) probaGuerison; // Conversion double -> float
         this.periodeIncubation = periodeIncubation;
         this.probaDeces = probaDeces;
-        this.dMax=dMax;
-        this.p0=p0;
+        this.dMax = dMax;
+        this.p0 = (float) p0; // Conversion double -> float
     }
 
+    // Méthodes
+    public double calculerProbTransmission(float distance) {
+        return (distance <= dMax) ? p0 * (1 - distance / dMax) : 0;
+    }
 
+    // Getters
+    public String getNom() {
+        return nom;
+    }
+
+    public float getTauxTransmission() {
+        return tauxTransmission;
+    }
+
+    public float getProbaGuerison() {
+        return probaGuerison;
+    }
+
+    public int getPeriodeIncubation() {
+        return periodeIncubation;
+    }
+
+    public double getProbaDeces() {
+        return probaDeces;
+    }
+
+    public float getDMax() {
+        return dMax;
+    }
+
+    public float getP0() {
+        return p0;
+    }
 }
