@@ -1,16 +1,23 @@
 public class Main {
     public static void main(String[] args) {
         // Initialisation des constantes
-        final int populationSize = 100;
-        final int cycles = 10;
+        final int populationSize = 100; // Taille de la population
+        final int cycles = 10; // Nombre de cycles de simulation
+        final int initialInfectedPercentage = 20; // 20% de la population sera infectée au départ
 
         // Création de la population
         Population population = new Population();
         for (int i = 0; i < populationSize; i++) {
             float x = (float) (Math.random() * 10);
             float y = (float) (Math.random() * 10);
-            Etat etat = (i < 20) ? Etat.Infecté : Etat.Sain; // 20% infectés au départ
+
+            // 20% infectés au départ
+            Etat etat = (i < populationSize * initialInfectedPercentage / 100) ? Etat.Infecté : Etat.Sain;
+
+            // Tous les individus commencent avec une sensibilité neutre
             sensibilité sensibilite = sensibilité.Neutre;
+
+            // Création de l'individu avec son état, sa sensibilité et sa position
             Individu individu = new Individu(etat, sensibilite, x, y);
             population.ajouterIndividu(individu);
         }
@@ -26,8 +33,6 @@ public class Main {
                 8f,      // Distance maximale de transmission réduite
                 0.4      // Taux de transmission initial réduit
         );
-
-
         population.ajouterVariant(variant1);
 
         // Suivi des cycles
