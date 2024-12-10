@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
         // Initialisation des constantes
-        final int populationSize = 100; // Taille de la population
-        final int cycles = 10; // Nombre de cycles de simulation
-        final int initialInfectedPercentage = 20; // 20% de la population sera infectée au départ
+        final int populationSize = 100;
+        final int cycles = 10;
+        final int initialInfectedPercentage = 20;
 
         // Création de la population
         Population population = new Population();
@@ -12,13 +12,23 @@ public class Main {
             float y = (float) (Math.random() * 10);
 
             // 20% infectés au départ
-            Etat etat = (i < populationSize * initialInfectedPercentage / 100) ? Etat.Infecté : Etat.Sain;
+            Etat etat = (i < populationSize * initialInfectedPercentage / 100) ? Etat.Infecté : Etat.Guéri;
 
             // Tous les individus commencent avec une sensibilité neutre
             sensibilité sensibilite = sensibilité.Neutre;
 
-            // Création de l'individu avec son état, sa sensibilité et sa position
-            Individu individu = new Individu(etat, sensibilite, x, y);
+            // Ajout de comportements sociaux pour certains individus
+            boolean distanciation = Math.random() < 0.3; // 30% des individus pratiquent la distanciation
+            boolean protection = Math.random() < 0.5;    // 50% des individus portent un masque
+
+            // Création d'un individu standard ou avec comportement social
+            Individu individu;
+            if (distanciation || protection) {
+                individu = new ComportementSocial(etat, sensibilite, x, y, distanciation, protection);
+            } else {
+                individu = new Individu(etat, sensibilite, x, y);
+            }
+
             population.ajouterIndividu(individu);
         }
 
