@@ -7,6 +7,9 @@ public class Main {
 
         // Création de la population
         Population population = new Population();
+        int totalDistanciation = 0;
+        int totalProtection = 0;
+
         for (int i = 0; i < populationSize; i++) {
             float x = (float) (Math.random() * 10);
             float y = (float) (Math.random() * 10);
@@ -25,12 +28,19 @@ public class Main {
             Individu individu;
             if (distanciation || protection) {
                 individu = new ComportementSocial(etat, sensibilite, x, y, distanciation, protection);
+                if (distanciation) totalDistanciation++;
+                if (protection) totalProtection++;
             } else {
                 individu = new Individu(etat, sensibilite, x, y);
             }
 
             population.ajouterIndividu(individu);
         }
+
+        System.out.println("Population initiale :");
+        System.out.println("Individus avec distanciation sociale : " + totalDistanciation);
+        System.out.println("Individus avec protection (masque) : " + totalProtection);
+        System.out.println();
 
         // Création de la maladie de base
         Variant variant1 = new Variant(
