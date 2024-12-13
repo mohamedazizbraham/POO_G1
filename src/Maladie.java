@@ -7,6 +7,7 @@ public class Maladie {
     private double probaDeces;
     private float dMax;
     private float p0;
+    private Epidemie epidemie;
 
     // Constructeur
     public Maladie(String nom, float tauxTransmission, double probaGuerison, int periodeIncubation, double probaDeces, float dMax, double p0) {
@@ -51,5 +52,12 @@ public class Maladie {
 
     public float getP0() {
         return p0;
+    }
+    public Epidemie getEpidemie() {
+        return epidemie;
+    }
+
+    public void setEpidemie(Epidemie epidemie) {
+        this.epidemie = epidemie;
     }
 }
