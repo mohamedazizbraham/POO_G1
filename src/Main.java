@@ -5,6 +5,9 @@ public class Main {
         final int cycles = 10;
         final int initialInfectedPercentage = 20;
 
+        // Création de l'épidémie
+        Epidemie epidemie = new Epidemie("Simulation de la COVID-19");
+
         // Création de la population
         Population population = new Population();
         int totalDistanciation = 0;
@@ -37,6 +40,7 @@ public class Main {
             population.ajouterIndividu(individu);
         }
 
+        System.out.println("Épidémie simulée : " + epidemie.getNom());
         System.out.println("Population initiale :");
         System.out.println("Individus avec distanciation sociale : " + totalDistanciation);
         System.out.println("Individus avec protection (masque) : " + totalProtection);
@@ -53,6 +57,9 @@ public class Main {
                 8f,      // Distance maximale de transmission réduite
                 0.4      // Taux de transmission initial réduit
         );
+
+        // Associer le variant à l'épidémie
+        epidemie.ajouterMaladie(variant1);
         population.ajouterVariant(variant1);
 
         // Suivi des cycles
@@ -74,6 +81,9 @@ public class Main {
                         8f,      // Distance maximale plus courte
                         0.6      // Taux de transmission initial plus fort
                 );
+
+                // Associer le nouveau variant à l'épidémie
+                epidemie.ajouterMaladie(variant2);
                 population.ajouterVariant(variant2);
                 System.out.println("Variant Delta introduit dans la population !");
             }
@@ -85,6 +95,12 @@ public class Main {
         System.out.println("\nHistorique de la simulation :");
         for (String historique : suivi.getHistorique()) {
             System.out.println(historique);
+        }
+
+        // Résumé des variants associés à l'épidémie
+        System.out.println("\nMaladies associées à l'épidémie " + epidemie.getNom() + ":");
+        for (Maladie maladie : epidemie.getMaladies()) {
+            System.out.println("- " + maladie.getNom());
         }
     }
 }
